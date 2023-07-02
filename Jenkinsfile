@@ -20,7 +20,6 @@ pipeline {
         }
        stage('Build Image') {
             steps { 
-                sh 'docker system prune -f'
                 sh 'docker build -t reactimage .'
                 sh 'docker tag reactimage:latest indumathicloud001/dev:latest'
             }    
