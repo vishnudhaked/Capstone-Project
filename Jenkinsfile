@@ -15,7 +15,6 @@ pipeline {
             steps {
                 // sh 'npm run test'
                 echo "Test"
-
             }
         }
        stage('Build Image') {
