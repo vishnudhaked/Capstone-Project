@@ -19,8 +19,8 @@ pipeline {
         }
        stage('Build Image') {
             steps { 
-                sh 'docker build -t reactimage .'
-                sh 'docker tag reactimage:latest indumathicloud001/dev:latest'
+                sh 'sudo docker build -t reactimage .'
+                sh 'sudo docker tag reactimage:latest indumathicloud001/dev:latest'
             }    
        }
        stage('Docker login') {
