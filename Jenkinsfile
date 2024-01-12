@@ -27,14 +27,14 @@ pipeline {
             steps { 
                 withCredentials([usernamePassword(credentialsId: 'Dockercred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                 sh "echo $PASS | docker login -u $USER --password-stdin"
-                sh 'docker push indumathicloud001/dev:latest'
+                sh 'docker push cloud01/dev:latest'
                 }
             }
        }
        stage('Deploy') {
             steps {  
                 script {
-                   def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 indumathicloud001/dev:latest'
+                   def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 cloud01/dev:latest'
                    sshagent(['sshkeypair']) {
                    sh "ssh -o StrictHostKeyChecking=no ubuntu@54.86.64.88 ${dockerCmd}"
                    }
